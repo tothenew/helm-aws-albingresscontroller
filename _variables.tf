@@ -14,9 +14,11 @@ variable "cluster_name" {
 }
 variable "OIDC_arn" {
   type = string
+  description = "OIDC arn will be used for Trust Relationship Policy"
 }
 variable "OIDC_url" {
   type = string
+  description = "OIDC url will be used for Trust Relationship Policy"
 }
 variable "alb_image" {
   type        = string
@@ -32,11 +34,6 @@ variable "helm_services" {
     release_name = "aws-load-balancer-controller"
   }
 }
-// variable "enabled" {
-//   type        = bool
-//   default     = true
-//   description = "Variable indicating whether deployment is enabled"
-// }
 
 variable "helm_chart_repo" {
   type    = string
@@ -44,4 +41,5 @@ variable "helm_chart_repo" {
 }
 variable "image_tag" {
   type = string
+  description = "image tag to be used for alb ingress controller"
 }

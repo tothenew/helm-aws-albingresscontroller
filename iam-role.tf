@@ -14,6 +14,7 @@ resource "aws_iam_policy" "alb_iam_policy" {
 
 output "alb_iam_policy_arn" {
   value = aws_iam_policy.alb_iam_policy.arn
+  description = AWS Load Balancer Controller IAM Policy ARN
 }
 
 ################################################################################
