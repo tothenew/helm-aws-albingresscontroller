@@ -28,9 +28,9 @@ variable "vpc_id" {
 }
 variable "helm_services" {
   default = {
-      name            = "aws-load-balancer-controller"
-      release_name    = "aws-load-balancer-controller"
-    }
+    name         = "aws-load-balancer-controller"
+    release_name = "aws-load-balancer-controller"
+  }
 }
 // variable "enabled" {
 //   type        = bool
@@ -39,9 +39,9 @@ variable "helm_services" {
 // }
 
 variable "helm_chart_repo" {
-    type = string 
-    default = "https://aws.github.io/eks-charts"
+  type    = string
+  default = "https://aws.github.io/eks-charts"
 }
 variable "image_tag" {
-  type = string 
+  type = string
 }
