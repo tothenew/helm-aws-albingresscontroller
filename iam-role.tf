@@ -1,15 +1,25 @@
+################################################################################
+# IAM Policy
+################################################################################
+
 resource "aws_iam_policy" "alb_iam_policy" {
   name        = "${var.cluster_name}-AWSLoadBalancerControllerIAMPolicy"
   path        = "/"
   description = "AWS Load Balancer Controller IAM Policy"
-  policy      = locals {
-  json_data = jsondecode(file("${path.module}/examples/alb-iam-policy.json"))
-    }
+  policy      = file("${path.module}/example/alb-iam-policy.json")
+  // locals {
+  // json_data = jsondecode(file("${path.module}/examples/alb-iam-policy.json"))
+  //   }
 }
 
 output "alb_iam_policy_arn" {
   value = aws_iam_policy.alb_iam_policy.arn
 }
+
+################################################################################
+# IAM Role
+################################################################################
+
 
 resource "aws_iam_role" "alb_iam_role" {
   name = "${var.cluster_name}-AWSLoadBalancerControllerIAMRole"
@@ -26,8 +36,8 @@ resource "aws_iam_role" "alb_iam_role" {
         }
         Condition = {
           StringEquals = {
-            "${OIDC_url}:aud" : "sts.amazonaws.com",
-            "${OIDC_url}:sub" : "system:serviceaccount:kube-system:aws-load-balancer-controller"
+            "${var.OIDC_url}:aud" : "sts.amazonaws.com",
+            "${var.OIDC_url}:sub" : "system:serviceaccount:kube-system:aws-load-balancer-controller"
           }
         }
       },
@@ -39,7 +49,10 @@ resource "aws_iam_role" "alb_iam_role" {
   }
 }
 
+################################################################################
 # Associate Load Balanacer Controller IAM Policy to  IAM Role
+################################################################################
+
 resource "aws_iam_role_policy_attachment" "alb_iam_role_policy_attach" {
   policy_arn = aws_iam_policy.alb_iam_policy.arn
   role       = aws_iam_role.alb_iam_role.name

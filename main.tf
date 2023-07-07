@@ -1,15 +1,22 @@
+################################################################################
+# AWS ALB Controller Helm Chart installation
+################################################################################
+
 resource "helm_release" "alb_ingress_controller" {
-  depends_on = [module.alb]
-  name       = "aws-load-balancer-controller"
-
-  repository = "https://aws.github.io/eks-charts"
-  chart      = "aws-load-balancer-controller"
-
-  namespace = "kube-system"
+  // count      = var.enabled ? length(var.helm_services) : 0
+  name       = var.helm_services.name
+  chart      = var.helm_services.release_name
+  repository = var.helm_chart_repo
+  namespace  = "kube-system"
 
   set {
     name  = "image.repository"
-    value = var.alb_image 
+    value = var.alb_image
+  }
+
+  set {
+    name  = "image.tag"
+    value = var.image_tag
   }
 
   set {
@@ -42,4 +49,7 @@ resource "helm_release" "alb_ingress_controller" {
     value = var.cluster_name
   }
 
+  values = [
+    yamlencode(var.helm_services)
+  ]
 }
