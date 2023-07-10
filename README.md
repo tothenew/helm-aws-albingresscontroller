@@ -32,8 +32,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_OIDC_arn"></a> [OIDC\_arn](#input\_OIDC\_arn) | n/a | `string` | OIDC arn will be used for Trust Relationship Policy | yes |
-| <a name="input_OIDC_url"></a> [OIDC\_url](#input\_OIDC\_url) | n/a | `string` | OIDC url will be used for Trust Relationship Policy | yes |
+| <a name="input_OIDC_arn"></a> [OIDC\_arn](#input\_OIDC\_arn) | OIDC arn will be used for Trust Relationship Policy | `string` | n/a | yes | 
+| <a name="input_OIDC_url"></a> [OIDC\_url](#input\_OIDC\_url) | OIDC url will be used for Trust Relationship Policy | `string` | n/a | yes |
 | <a name="input_alb_image"></a> [alb\_image](#input\_alb\_image) | image to be used for ALB ingress controller | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region in which resoure will be provisioning | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | cluster name in which ingress controller will be created | `string` | n/a | yes |

@@ -15,10 +15,12 @@ variable "cluster_name" {
 variable "OIDC_arn" {
   type = string
   description = "OIDC arn will be used for Trust Relationship Policy"
+  default = ""
 }
 variable "OIDC_url" {
   type = string
   description = "OIDC url will be used for Trust Relationship Policy"
+  default = ""
 }
 variable "alb_image" {
   type        = string
