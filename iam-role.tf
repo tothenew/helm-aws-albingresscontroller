@@ -7,14 +7,11 @@ resource "aws_iam_policy" "alb_iam_policy" {
   path        = "/"
   description = "AWS Load Balancer Controller IAM Policy"
   policy      = file("${path.module}/example/alb-iam-policy.json")
-  // locals {
-  // json_data = jsondecode(file("${path.module}/examples/alb-iam-policy.json"))
-  //   }
 }
 
 output "alb_iam_policy_arn" {
   value = aws_iam_policy.alb_iam_policy.arn
-  description = AWS Load Balancer Controller IAM Policy ARN
+  description = "AWS Load Balancer Controller IAM Policy ARN"
 }
 
 ################################################################################
