@@ -1,3 +1,7 @@
+Terraform module for alb-ingress-controller on Kubernetes cluster (EKS) for ingress resource. We are using Helm chart to configure the same on cluster.
+
+Below are the Terraform template details.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
