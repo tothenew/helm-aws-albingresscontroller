@@ -16,8 +16,18 @@ The following content needed to be created and managed:
      - Policy for Application Load Balancer
      - Ingress Controller with ALB
      - After applying the Ingress manifest of service the ingress controller will provision a Application Load Balancer which will be used to route traffic towards the internal resources of cluster.
- - Example Usages :
-     - This Ingress controller will be used to create the Ingress for deployments i.e : https://example.com/
+ 
+ ## Usages : 
+
+    module "alb_ingress_controller" {
+    source     = "git::https://github.com/mohanttn/helm-aws-albingresscontroller.git"
+    helm_services = [
+        {
+        name            = "aws-load-balancer-controller"
+        release_name    = "aws-load-balancer-controller"
+        }
+    ]
+    }
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
