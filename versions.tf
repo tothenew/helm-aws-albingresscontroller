@@ -10,6 +10,6 @@ terraform {
 
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config" ## update the kubeconfig path accordingly
+    config_path = "~/.kube/config"  ## update the kubeconfig path accordingly
   }
 }

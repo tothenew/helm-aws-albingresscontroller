@@ -1,3 +1,24 @@
+ # terraform-aws-template
+
+[![Lint Status](https://github.com/tothenew/terraform-aws-template/workflows/Lint/badge.svg)](https://github.com/tothenew/terraform-aws-template/actions)
+[![LICENSE](https://img.shields.io/github/license/tothenew/terraform-aws-template)](https://github.com/tothenew/terraform-aws-template/blob/master/LICENSE)
+
+This is a template to use for baseline. The default actions will provide updates for section between Requirements and Outputs.
+
+The following content needed to be created and managed:
+ - Introduction :
+     - This Module will be used to Installation and configuration of alb-ingress-controller to use ALB ingress for public/private access from outside of the cluster.
+     - Using this module user can directly install the alb-ingress-controller on eks cluster and can use further for their internal resources.
+ - Prerequisites : 
+     - To use this Module we need an EKS cluster alongwith the OIDC url and OIDC arn to use it further for Trust Realtionship policy.   
+ - This module will create the following resources :
+     - IAM role for ingress-controller
+     - Policy for Application Load Balancer
+     - Ingress Controller with ALB
+     - After applying the Ingress manifest of service the ingress controller will provision a Application Load Balancer which will be used to route traffic towards the internal resources of cluster.
+ - Example Usages :
+     - This Ingress controller will be used to create the Ingress for deployments i.e : https://example.com/
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -50,3 +71,11 @@ No modules.
 | <a name="output_alb_iam_policy_arn"></a> [alb\_iam\_policy\_arn](#output\_alb\_iam\_policy\_arn) | AWS Load Balancer Controller IAM Policy ARN |
 | <a name="output_alb_iam_role_arn"></a> [alb\_iam\_role\_arn](#output\_alb\_iam\_role\_arn) | AWS Load Balancer Controller IAM Role ARN |
 <!-- END_TF_DOCS -->
+
+## Authors
+
+Module managed by [TO THE NEW Pvt. Ltd.](https://github.com/tothenew)
+
+## License
+
+Apache 2 Licensed. See [LICENSE](https://github.com/tothenew/terraform-aws-template/blob/main/LICENSE) for full details.
